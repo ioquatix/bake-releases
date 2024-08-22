@@ -3,14 +3,15 @@
 # Released under the MIT License.
 # Copyright, 2024, by Samuel Williams.
 
+# Update the 'Unreleased' section of the changes document with the given version number, if it exists.
+#
+# @parameter version [String] The version number to release.
 def release(version)
-	path = self.changes_path
-	
-	unless version.start_with?('v')
-		version = "v#{version}"
-	end
-	
-	self.update_document(path) do |document|
+	self.update_document do |document|
+		unless version.start_with?('v')
+			version = "v#{version}"
+		end
+		
 		if node = document.find_header('Unreleased')
 			# Create a new text node with the version number:
 			child = Markly::Node.new(:text)
@@ -29,7 +30,7 @@ def changes_path(root = context.root)
 	File.join(root, 'changes.md')
 end
 
-def update_document(path)
+def update_document(path = self.changes_path)
 	require 'markly'
 	
 	if File.exist?(path)

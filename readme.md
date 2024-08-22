@@ -1,12 +1,20 @@
 # Bake::Changes
 
-A tool for managing a changelog.
+A tool for managing a `changes.md` document.
 
 [![Development Status](https://github.com/ioquatix/bake-changes/workflows/Test/badge.svg)](https://github.com/ioquatix/bake-changes/actions?workflow=Test)
 
 ## Usage
 
-## Changes
+### Combining with `Bake::Gem`
+
+``` ruby
+# bake.rb
+
+def after_gem_release_version_increment(version)
+	context['changes:update'].call(version)
+end
+```
 
 ## Contributing
 
