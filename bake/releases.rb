@@ -3,12 +3,12 @@
 # Released under the MIT License.
 # Copyright, 2024, by Samuel Williams.
 
-# Update the 'Unreleased' section of the changes document with the given version number, if it exists.
+# Update the 'Unreleased' section of the releases document with the given version number, if it exists.
 #
 # The version number can be any string, but ideally follows the semantic versioning scheme with a "v" prefix.
 #
 # @parameter version [String] The version number to release.
-def release(version)
+def update(version)
 	self.update_document do |document|
 		if node = document.find_header('Unreleased')
 			# Create a new text node with the version number:
@@ -24,11 +24,11 @@ end
 
 private
 
-def changes_path(root = context.root)
-	File.join(root, 'changes.md')
+def releases_path(root = context.root)
+	File.join(root, 'releases.md')
 end
 
-def update_document(path = self.changes_path)
+def update_document(path = self.releases_path)
 	require 'markly'
 	
 	if File.exist?(path)

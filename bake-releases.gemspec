@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative "lib/bake/changes/version"
+require_relative "lib/bake/releases/version"
 
 Gem::Specification.new do |spec|
-	spec.name = "bake-changes"
-	spec.version = Bake::Changes::VERSION
+	spec.name = "bake-releases"
+	spec.version = Bake::Releases::VERSION
 	
-	spec.summary = "Changes document management."
+	spec.summary = "Releases document management."
 	spec.authors = ["Samuel Williams"]
 	spec.license = "MIT"
 	
 	spec.cert_chain  = ['release.cert']
 	spec.signing_key = File.expand_path('~/.gem/release.pem')
 	
-	spec.homepage = "https://github.com/ioquatix/bake-changes"
+	spec.homepage = "https://github.com/ioquatix/bake-releases"
 	
 	spec.metadata = {
-		"documentation_uri" => "https://ioquatix.github.io/bake-changes/",
+		"documentation_uri" => "https://ioquatix.github.io/bake-releases/",
 		"funding_uri" => "https://github.com/sponsors/ioquatix/",
-		"source_code_uri" => "https://github.com/ioquatix/bake-changes.git",
+		"source_code_uri" => "https://github.com/ioquatix/bake-releases.git",
 	}
 	
 	spec.files = Dir.glob(['{bake,lib}/**/*', '*.md'], File::FNM_DOTMATCH, base: __dir__)

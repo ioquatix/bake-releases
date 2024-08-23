@@ -5,19 +5,19 @@
 
 require 'bake'
 
-describe Bake::Changes do
+describe Bake::Releases do
 	it "has a version number" do
-		expect(Bake::Changes::VERSION).to be =~ /^\d+\.\d+\.\d+$/
+		expect(Bake::Releases::VERSION).to be =~ /^\d+\.\d+\.\d+$/
 	end
 	
 	let(:project_root) {File.expand_path('.project', __dir__)}
 	let(:context) {Bake::Context.load(project_root)}
 	
-	it "can update changes document" do
-		changes_path = File.join(project_root, 'changes.md')
+	it "can update releases document" do
+		releases_path = File.join(project_root, 'releases.md')
 		
-		File.write(changes_path, <<~DOCUMENT)
-			# Changes
+		File.write(releases_path, <<~DOCUMENT)
+			# Releases
 			
 			## Unreleased
 			
@@ -28,10 +28,10 @@ describe Bake::Changes do
 			  - First release.
 		DOCUMENT
 		
-		context['changes:release'].call('v1.0.0')
+		context['releases:update'].call('v1.0.0')
 		
-		expect(File.read(changes_path)).to be == <<~DOCUMENT
-			# Changes
+		expect(File.read(releases_path)).to be == <<~DOCUMENT
+			# Releases
 			
 			## v1.0.0
 			
@@ -41,5 +41,7 @@ describe Bake::Changes do
 			
 			  - First release.
 		DOCUMENT
+	ensure
+		File.unlink(releases_path)
 	end
 end

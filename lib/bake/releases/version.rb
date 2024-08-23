@@ -4,7 +4,7 @@
 # Copyright, 2024, by Samuel Williams.
 
 module Bake
-	module Changes
+	module Releases
 		VERSION = "0.2.0"
 	end
 end
