@@ -28,7 +28,7 @@ describe Bake::Changes do
 			  - First release.
 		DOCUMENT
 		
-		context['changes:release'].call('1.0.0')
+		context['changes:release'].call('v1.0.0')
 		
 		expect(File.read(changes_path)).to be == <<~DOCUMENT
 			# Changes
