@@ -5,17 +5,15 @@
 
 # Update the 'Unreleased' section of the changes document with the given version number, if it exists.
 #
+# The version number can be any string, but ideally follows the semantic versioning scheme with a "v" prefix.
+#
 # @parameter version [String] The version number to release.
 def release(version)
 	self.update_document do |document|
-		unless version.start_with?('v')
-			version = "v#{version}"
-		end
-		
 		if node = document.find_header('Unreleased')
 			# Create a new text node with the version number:
 			child = Markly::Node.new(:text)
-			child.string_content = version
+			child.string_content = version.to_s
 			
 			# Delete all current children, and replace it with the version number:
 			node.extract_children
