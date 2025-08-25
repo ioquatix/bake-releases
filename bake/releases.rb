@@ -10,7 +10,7 @@
 # @parameter version [String] The version number to release.
 def update(version)
 	self.update_document do |document|
-		if node = document.find_header('Unreleased')
+		if node = document.find_header("Unreleased")
 			# Create a new text node with the version number:
 			child = Markly::Node.new(:text)
 			child.string_content = version.to_s
@@ -25,11 +25,11 @@ end
 private
 
 def releases_path(root = context.root)
-	File.join(root, 'releases.md')
+	File.join(root, "releases.md")
 end
 
 def update_document(path = self.releases_path)
-	require 'markly'
+	require "markly"
 	
 	if File.exist?(path)
 		document = Markly.parse(File.read(path))

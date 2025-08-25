@@ -1,8 +1,17 @@
 # Releases
 
-## 0.1.0
+## Unreleased
 
-## v0.0.0
+  - Add documentation and agent context.
 
-  - Foo
-  - Bar
+## v0.3.0
+
+- Rename `changes` -> `releases`.
+
+## v0.2.0
+
+- Directly use supplied version.
+
+## v0.1.0
+
+- Initial implementation.
