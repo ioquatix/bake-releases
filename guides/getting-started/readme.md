@@ -60,6 +60,7 @@ When you release your gem using `bake gem:release`, the "Unreleased" section wil
 - **Focus on user impact** - Describe what changed for the user, not implementation details.
 - **Focus on externally visible changes** - Only mention changes that affect users. Internal improvements like "Improving tests" or "Updating code" are uninteresting for release notes unless there is nothing else to report.
 - **Use active voice** - "Added support for..." rather than "Support was added for...".
+- **Use backticks for code elements** - Wrap class names, method names, file names, and other code elements in backticks (e.g., `ClassName`, `method_name`, `config.yml`).
 - **Link to issues/PRs when helpful** - Provides additional context for complex changes.
 - **Group related changes** - Multiple small fixes can be combined into one entry.
 
