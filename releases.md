@@ -1,6 +1,6 @@
 # Releases
 
-## Unreleased
+## v0.5.2
 
   - Remove `--clobber` from GitHub release - it was a hallucination and doesn't exist.
 
