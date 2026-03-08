@@ -2,6 +2,11 @@
 
 Please see the [project releases](https://ioquatix.github.io/bake-releases/releases/index) for all releases.
 
+### v0.5.3
+
+  - Don't strip whitespace from release notes.
+  - It breaks markdown formatting (this is a test).
+
 ### v0.5.2
 
   - Remove `--clobber` from GitHub release - it was a hallucination and doesn't exist.
