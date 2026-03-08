@@ -9,23 +9,24 @@
 # Uses the `gh` command-line tool to create the release.
 # Release notes are extracted from `releases.md` for the given version; if none are found, the release is created with empty notes.
 #
-# @parameter tag [String] The tag name of the release, e.g. "v1.2.3".
-def release(tag)
+# @parameter tag_name [String] The tag name of the release, e.g. "v1.2.3".
+def release(tag_name)
 	require "tempfile"
 	
 	repo = github_repo
-	notes = release_notes(tag.to_s)
+	notes = release_notes(tag_name.to_s)
 	
 	Tempfile.create(["release-notes", ".md"]) do |file|
 		file.write(notes || "")
 		file.flush
 		
 		system(
-			"gh", "release", "create", tag.to_s,
+			"gh", "release", "create", tag_name.to_s,
 			"--repo", repo,
-			"--title", tag.to_s,
-			"--notes-file", file.path
-		) or raise "Failed to create GitHub release for #{tag}"
+			"--title", tag_name.to_s,
+			"--notes-file", file.path,
+			"--clobber"
+		) or raise "Failed to create GitHub release for #{tag_name}"
 	end
 end
 
@@ -37,7 +38,7 @@ def github_repo
 	gemspec_path = Dir.glob(File.join(context.root, "*.gemspec")).first
 	raise "No gemspec found in #{context.root}" unless gemspec_path
 	
-	spec = ::Gem::Specification.load(gemspec_path)
+	spec = Gem::Specification.load(gemspec_path)
 	
 	source_uri = spec.metadata&.dig("source_code_uri") || spec.homepage
 	raise "No source_code_uri or homepage found in gemspec" unless source_uri
@@ -48,13 +49,13 @@ def github_repo
 	match[:repo]
 end
 
-def release_notes(tag, path = File.join(context.root, "releases.md"))
+def release_notes(tag_name, path = File.join(context.root, "releases.md"))
 	return nil unless File.exist?(path)
 	
 	require "markly"
 	document = Markly.parse(File.read(path))
 	
-	header = document.find_header(tag)
+	header = document.find_header(tag_name)
 	return nil unless header
 	
 	fragment = Markly::Node.new(:document)
@@ -77,5 +78,5 @@ def release_notes(tag, path = File.join(context.root, "releases.md"))
 		end
 	end
 
-	fragment.to_markdown.strip
+	fragment.to_markdown
 end
