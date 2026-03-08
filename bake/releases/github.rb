@@ -9,24 +9,24 @@
 # Uses the `gh` command-line tool to create the release.
 # Release notes are extracted from `releases.md` for the given version; if none are found, the release is created with empty notes.
 #
-# @parameter tag_name [String] The tag name of the release, e.g. "v1.2.3".
-def release(tag_name)
+# @parameter tag [String] The tag name of the release, e.g. "v1.2.3".
+def release(tag)
 	require "tempfile"
 	
 	repo = github_repo
-	notes = release_notes(tag_name.to_s)
+	notes = release_notes(tag.to_s)
 	
 	Tempfile.create(["release-notes", ".md"]) do |file|
 		file.write(notes || "")
 		file.flush
 		
 		system(
-			"gh", "release", "create", tag_name.to_s,
+			"gh", "release", "create", tag.to_s,
 			"--repo", repo,
-			"--title", tag_name.to_s,
+			"--title", tag.to_s,
 			"--notes-file", file.path,
 			"--clobber"
-		) or raise "Failed to create GitHub release for #{tag_name}"
+		) or raise "Failed to create GitHub release for #{tag}"
 	end
 end
 
@@ -49,13 +49,13 @@ def github_repo
 	match[:repo]
 end
 
-def release_notes(tag_name, path = File.join(context.root, "releases.md"))
+def release_notes(tag, path = File.join(context.root, "releases.md"))
 	return nil unless File.exist?(path)
 	
 	require "markly"
 	document = Markly.parse(File.read(path))
 	
-	header = document.find_header(tag_name)
+	header = document.find_header(tag)
 	return nil unless header
 	
 	fragment = Markly::Node.new(:document)

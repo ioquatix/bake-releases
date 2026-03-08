@@ -1,5 +1,9 @@
 # Releases
 
+## Unreleased
+
+  - Fix `tag_name` -> `tag` in `after_gem_release` hook.
+
 ## v0.5.0
 
   - Add support for automatic GitHub release creation.
