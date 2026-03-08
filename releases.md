@@ -1,5 +1,9 @@
 # Releases
 
+## Unreleased
+
+  - Fix ambiguous constant name `Gem::Specification` -> `::Gem::Specification`.
+
 ## v0.5.3
 
   - Don't strip whitespace from release notes.
