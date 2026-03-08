@@ -1,5 +1,9 @@
 # Releases
 
+## Unreleased
+
+  - Remove `--clobber` from GitHub release - it was a hallucination and doesn't exist.
+
 ## v0.5.1
 
   - Fix `tag_name` -\> `tag` in `after_gem_release` hook.

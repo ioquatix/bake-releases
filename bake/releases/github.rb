@@ -24,8 +24,7 @@ def release(tag)
 			"gh", "release", "create", tag.to_s,
 			"--repo", repo,
 			"--title", tag.to_s,
-			"--notes-file", file.path,
-			"--clobber"
+			"--notes-file", file.path
 		) or raise "Failed to create GitHub release for #{tag}"
 	end
 end
@@ -38,7 +37,7 @@ def github_repo
 	gemspec_path = Dir.glob(File.join(context.root, "*.gemspec")).first
 	raise "No gemspec found in #{context.root}" unless gemspec_path
 	
-	spec = Gem::Specification.load(gemspec_path)
+	spec = ::Gem::Specification.load(gemspec_path)
 	
 	source_uri = spec.metadata&.dig("source_code_uri") || spec.homepage
 	raise "No source_code_uri or homepage found in gemspec" unless source_uri
