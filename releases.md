@@ -1,5 +1,9 @@
 # Releases
 
+## Unreleased
+
+  - Add support for automatic GitHub release creation.
+
 ## v0.4.0
 
   - Add documentation and agent context.

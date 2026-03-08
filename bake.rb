@@ -10,3 +10,7 @@ def after_gem_release_version_increment(version)
 	context["releases:update"].call(version)
 	context["utopia:project:update"].call
 end
+
+def after_gem_release(tag_name:, **options)
+	context["releases:github:release"].call(tag_name)
+end
