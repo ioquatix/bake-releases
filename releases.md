@@ -1,8 +1,8 @@
 # Releases
 
-## Unreleased
+## v0.5.4
 
-  - Fix ambiguous constant name `Gem::Specification` -> `::Gem::Specification`.
+  - Fix ambiguous constant name `Gem::Specification` -\> `::Gem::Specification`.
 
 ## v0.5.3
 

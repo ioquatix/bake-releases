@@ -2,6 +2,10 @@
 
 Please see the [project releases](https://ioquatix.github.io/bake-releases/releases/index) for all releases.
 
+### v0.5.4
+
+  - Fix ambiguous constant name `Gem::Specification` -\> `::Gem::Specification`.
+
 ### v0.5.3
 
   - Don't strip whitespace from release notes.
