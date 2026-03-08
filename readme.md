@@ -2,7 +2,9 @@
 
 Please see the [project releases](https://ioquatix.github.io/bake-releases/releases/index) for all releases.
 
-[![Development Status](https://github.com/ioquatix/bake-changes/workflows/Test/badge.svg)](https://github.com/ioquatix/bake-changes/actions?workflow=Test)
+### v0.5.0
+
+  - Add support for automatic GitHub release creation.
 
 ### v0.4.0
 
