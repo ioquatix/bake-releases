@@ -1,8 +1,8 @@
 # Releases
 
-## Unreleased
+## v0.5.1
 
-  - Fix `tag_name` -> `tag` in `after_gem_release` hook.
+  - Fix `tag_name` -\> `tag` in `after_gem_release` hook.
 
 ## v0.5.0
 
